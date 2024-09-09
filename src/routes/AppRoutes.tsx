@@ -27,7 +27,25 @@ const router = createBrowserRouter([
             },
             {
                 path:"products/:prefix",
-                element:<Products/>
+                element:<Products/>,
+
+                /*Using loader property to set guard on page http 
+                before sending to server and loading page*/
+                loader:({params})=>{
+                    /**
+                     * test in prefix in regular expression pattern 
+                     * to ensure that the prefix is always a string
+                     * if not throw Response Bad Request 400 
+                     */
+                    if(typeof params.prefix !== "string" ||
+                        !/^[a-z]+$/i.test(params.prefix as string)){
+                        throw new Response("Bad Request",{
+                            statusText:"Category Not Found",
+                            status:400,
+                        });
+                    }   
+                    return true;
+                }
             },
             {
                 path:"about-us",
