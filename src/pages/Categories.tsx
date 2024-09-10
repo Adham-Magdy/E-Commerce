@@ -1,10 +1,36 @@
-import React from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
+import Category from '../components/eCommerce/Category/Category'
 
 const Categories = () => {
   return (
-    <div>
-      
-    </div>
+   <Container>
+    <Row>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+      <Col xs={6} md={3} className='d-flex justify-content-center mt-2 mb-5 '>
+      <Category/>
+      </Col>
+    </Row>
+   </Container>
   )
 }
 
