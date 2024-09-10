@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 element:<Categories/>
             },
             {
-                path:"products/:prefix",
+                path:"categories/products/:prefix",
                 element:<Products/>,
 
                 /*Using loader property to set guard on page http 
