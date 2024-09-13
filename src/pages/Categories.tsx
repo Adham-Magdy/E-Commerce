@@ -1,8 +1,8 @@
-import { Col, Container, Row } from 'react-bootstrap'
-import Category from '../components/eCommerce/Category/Category'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { useEffect } from 'react';
-import { actGetCategories } from '../store/categories/categoriesSlice';
+import { Col, Container, Row } from "react-bootstrap";
+import Category from "../components/eCommerce/Category/Category";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useEffect } from "react";
+import { actGetCategories } from "../store/categories/categoriesSlice";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -24,16 +24,22 @@ const Categories = () => {
             key={record.id}
             className="d-flex justify-content-center mb-5 mt-2"
           >
-            <Category title={record.title} img={record.img} prefix={record.prefix} />
+            <Category
+              title={record.title}
+              img={record.img}
+              prefix={record.prefix}
+            />
           </Col>
         ))
       : "there are no categories";
 
   return (
-    <Container>
-      <Row>{categoriesList}</Row>
-    </Container>
+    <>
+      <Container>
+        <Row>{categoriesList}</Row>
+      </Container>
+    </>
   );
-}
+};
 
-export default Categories
+export default Categories;

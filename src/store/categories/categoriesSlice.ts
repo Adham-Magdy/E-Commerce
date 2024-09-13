@@ -1,18 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import actGetCategories from "./act/actGetCategories";
+import { TLoading } from "../../types/shared";
+import { TCategory } from "../../types/category";
 
 
 
 
 
 interface ICategoriesState {
-    records:{
-        id: number;
-        title: string;
-        prefix: string;
-        img: string;
-      }[];
-    loading: "idle" | "pending" | "succeed" | "failed";
+    records:TCategory[];
+    loading: TLoading;
     error:string | null;
 };
 const initialState: ICategoriesState = {
@@ -29,13 +26,13 @@ const categoriesSlice = createSlice({
             state.loading = "pending";
             state.error = null;
         }); // pending case
-        builder.addCase(actGetCategories.fulfilled,(state,action)=>{
+        builder.addCase(actGetCategories.fulfilled,(state,action:PayloadAction<TCategory>)=>{
             state.loading = "succeed";
-            state.records.push(action.payload)
+            state.records = action.payload;
         });// fulfilled case
         builder.addCase(actGetCategories.rejected,(state,action)=>{
             state.loading="failed";
-            // put guard to ensure payload is string or null
+            // set guard to ensure payload is string or null
             if(action.payload && typeof action.payload ==="string"){
                 state.error = action.payload;
 
