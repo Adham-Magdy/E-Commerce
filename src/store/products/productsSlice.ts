@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Products from "../../pages/Products";
-import { TCategory } from "../../types/category";
 import { TLoading } from "../../types/shared";
 import actGetProductsByCatPrefix from "./act/actGetProductsByCatPrefix";
+import { TProduct } from "../../types/product";
 
 interface IProductsModel {
-  records: TCategory[];
+  records: TProduct[];
   loading: TLoading;
   error: string | null;
 }
@@ -27,7 +27,7 @@ const productsSlice = createSlice({
     }); // pending case
     builder.addCase(
       actGetProductsByCatPrefix.fulfilled,
-      (state, action: PayloadAction<TCategory>) => {
+      (state, action: PayloadAction<TProduct>) => {
         state.loading = "succeed";
         state.records = action.payload;
       }

@@ -6,7 +6,7 @@ import { actGetCategories } from "../store/categories/categoriesSlice";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
-  const { loading, error, records } = useAppSelector(
+  const {  records } = useAppSelector(
     (state) => state.categories
   );
 
