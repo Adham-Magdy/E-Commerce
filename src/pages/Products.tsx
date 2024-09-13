@@ -4,11 +4,12 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { useEffect } from 'react';
 import { actGetProductsByCatPrefix, productsCleanUp } from '../store/products/productsSlice';
 import { useParams } from 'react-router-dom';
+import { Loading } from '../components/feedback';
 
 const Products = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
-  const{records} = useAppSelector(state=> state.products);
+  const{loading,error,records} = useAppSelector(state=> state.products);
 
   useEffect(()=>{
     let prefix: string
@@ -39,9 +40,12 @@ const Products = () => {
     : "there are no products";
   return (
     <Container>
-    <Row>
-      {productsList}
+      <Loading status={loading} error={error}>
+      <Row>
+    {productsList}
     </Row>
+      </Loading>
+    
    </Container>
   )
 }
