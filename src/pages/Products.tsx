@@ -2,7 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Product from '../components/eCommerce/Product/Product'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { useEffect } from 'react';
-import { actGetProductsByCatPrefix } from '../store/products/productsSlice';
+import { actGetProductsByCatPrefix, productsCleanUp } from '../store/products/productsSlice';
 import { useParams } from 'react-router-dom';
 
 const Products = () => {
@@ -15,7 +15,12 @@ const Products = () => {
     if(params.prefix && typeof params.prefix ==="string"){
       prefix = params.prefix;
       dispatch(actGetProductsByCatPrefix(prefix));
+     
     }
+    return ()=>{
+      dispatch(productsCleanUp());
+    }
+   
 
   },[dispatch,params]);
   const productsList =
@@ -31,7 +36,7 @@ const Products = () => {
           />
         </Col>
       ))
-    : "there are no categories";
+    : "there are no products";
   return (
     <Container>
     <Row>
