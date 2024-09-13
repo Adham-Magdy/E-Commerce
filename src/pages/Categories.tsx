@@ -11,10 +11,12 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    if (!records.length) {
+    // Prevent to extra getCategories Actions
+    if(!records.length){
       dispatch(actGetCategories());
     }
-  }, [dispatch, records]);
+
+  }, [dispatch,records]);
 
   const categoriesList =
     records.length > 0
