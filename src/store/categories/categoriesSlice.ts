@@ -1,17 +1,17 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import actGetCategories from "./act/actGetCategories";
 
 
 
-export type TCategoryModel= {
-    id: number;
-    title: string;
-    prefix: string;
-    img: string;
-  };
+
 
 interface ICategoriesState {
-    records:TCategoryModel[];
+    records:{
+        id: number;
+        title: string;
+        prefix: string;
+        img: string;
+      }[];
     loading: "idle" | "pending" | "succeed" | "failed";
     error:string | null;
 };
@@ -29,7 +29,7 @@ const categoriesSlice = createSlice({
             state.loading = "pending";
             state.error = null;
         }); // pending case
-        builder.addCase(actGetCategories.fulfilled,(state,action:PayloadAction<TCategoryModel>)=>{
+        builder.addCase(actGetCategories.fulfilled,(state,action)=>{
             state.loading = "succeed";
             state.records.push(action.payload)
         });// fulfilled case

@@ -24,7 +24,7 @@ const Categories = () => {
             key={record.id}
             className="d-flex justify-content-center mb-5 mt-2"
           >
-            <Category {...record} />
+            <Category title={record.title} img={record.img} prefix={record.prefix} />
           </Col>
         ))
       : "there are no categories";
