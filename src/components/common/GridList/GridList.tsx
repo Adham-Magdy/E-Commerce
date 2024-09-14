@@ -1,11 +1,12 @@
 import { Col, Row } from "react-bootstrap";
-import { TCategory } from "../../../types/category"
 
-type GridListProps={
-    records:TCategory[],
-    renderItems:(record:TCategory) => React.ReactNode;
+type GridListProps<T>={
+    records:T[],
+    renderItems:(record:T) => React.ReactNode;
 }
-const GridList = ({records,renderItems}:GridListProps) => {
+
+type HasID = {id?:number};
+const GridList = <T extends HasID>({records,renderItems}:GridListProps<T>) => {
     /**
      * Implement Render Props Patterns
      * sharing logic and data among several components, 
